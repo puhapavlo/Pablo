@@ -102,7 +102,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ->setLabel(t('Name'))
       ->setDescription(t('The name of the Feedback entity.'))
       ->setSettings([
-        'max_length' => 50,
+        'max_length' => 100,
         'text_processing' => 0,
       ])
       ->setDefaultValue('')
@@ -119,11 +119,105 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['status']->setDescription(t('A boolean indicating whether the Feedback is published.'))
-      ->setDisplayOptions('form', [
-        'type' => 'boolean_checkbox',
+    $fields['email'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The email of the Feedback entity.'))
+      ->setSettings([
+        'max_length' => 50,
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'email',
         'weight' => -3,
-      ]);
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'email',
+        'weight' => -3,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['phone'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Phone'))
+      ->setDescription(t('The phone of the Feedback entity.'))
+      ->setSettings([
+        'max_length' => 16,
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'string_textfield',
+        'weight' => -2,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string',
+        'weight' => -2,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['feedback'] = BaseFieldDefinition::create('text_long')
+      ->setLabel(t('Feedback'))
+      ->setDescription(t('The feedback of the Feedback entity.'))
+      ->setSettings([
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'text_long',
+        'weight' => -1,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'text_long',
+        'weight' => -1,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
+      ->setRequired(TRUE);
+
+    $fields['avatar'] = BaseFieldDefinition::create('image')
+      ->setLabel(t('Avatar'))
+      ->setDescription(t('The feedback of the Avatar entity.'))
+      ->setSettings([
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('/modules/custom/pablo/images/avatar-default.png')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'image',
+        'weight' => 0,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'image',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['picture'] = BaseFieldDefinition::create('image')
+      ->setLabel(t('Picture'))
+      ->setDescription(t('The picture of the Feedback entity.'))
+      ->setSettings([
+        'text_processing' => 0,
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'image',
+        'weight' => 1,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'image',
+        'weight' => 1,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
