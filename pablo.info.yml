@@ -1,0 +1,5 @@
+name: Pablo
+type: module
+package: custom
+description: 'This module adds a guestbook to your website'
+core_version_requirement: ^9
