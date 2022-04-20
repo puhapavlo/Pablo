@@ -100,7 +100,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Feedback entity.'))
+      ->setDescription(t('The minimum length of the name is 2 characters, and the maximum is 100'))
       ->setSettings([
         'max_length' => 100,
         'text_processing' => 0,
@@ -121,7 +121,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
 
     $fields['email'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Email'))
-      ->setDescription(t('The email of the Feedback entity.'))
+      ->setDescription(t('Example: example@gmail.com'))
       ->setSettings([
         'max_length' => 50,
         'text_processing' => 0,
@@ -142,7 +142,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
 
     $fields['phone'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Phone'))
-      ->setDescription(t('The phone of the Feedback entity.'))
+      ->setDescription(t('Example: 380960000000'))
       ->setSettings([
         'max_length' => 16,
         'text_processing' => 0,
@@ -161,9 +161,8 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setRequired(TRUE);
 
-    $fields['feedback'] = BaseFieldDefinition::create('text_long')
+    $fields['feedback'] = BaseFieldDefinition::create('string_long')
       ->setLabel(t('Feedback'))
-      ->setDescription(t('The feedback of the Feedback entity.'))
       ->setSettings([
         'text_processing' => 0,
       ])
@@ -183,11 +182,14 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
 
     $fields['avatar'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Avatar'))
-      ->setDescription(t('The feedback of the Avatar entity.'))
+      ->setDescription(t('The image format should be jpeg, jpg, png and the file size should not exceed 2 MB'))
       ->setSettings([
-        'text_processing' => 0,
+        'file_extensions' => 'png jpg jpeg',
+        'max_filesize' => '2000000',
+        'alt_field' => 0,
+        'alt_field_required' => FALSE,
       ])
-      ->setDefaultValue('/modules/custom/pablo/images/avatar-default.png')
+      ->setDefaultValue('')
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'image',
@@ -202,9 +204,12 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
 
     $fields['picture'] = BaseFieldDefinition::create('image')
       ->setLabel(t('Picture'))
-      ->setDescription(t('The picture of the Feedback entity.'))
+      ->setDescription(t('The image format should be jpeg, jpg, png and the file size should not exceed 5 MB'))
       ->setSettings([
-        'text_processing' => 0,
+        'file_extensions' => 'png jpg jpeg',
+        'max_filesize' => '5000000',
+        'alt_field' => 0,
+        'alt_field_required' => FALSE,
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
