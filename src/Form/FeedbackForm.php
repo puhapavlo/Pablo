@@ -71,7 +71,6 @@ class FeedbackForm extends ContentEntityForm {
   public function save(array $form, FormStateInterface $form_state) {
 
     $response = new AjaxResponse();
-    dpm($form_state->getValue('avatar')[0]['fids'][0]);
     // Validation name.
     if (strlen($form_state->getValue('name')[0]['value']) < 2 || strlen($form_state->getValue('name')[0]['value']) > 100) {
       $response->addCommand(new MessageCommand($this->t('The minimum length of the name is 2 characters, and the maximum is 100.'), '#form-system-messages', ['type' => 'error']));

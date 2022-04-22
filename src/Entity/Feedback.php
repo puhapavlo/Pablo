@@ -98,6 +98,16 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
     // Add the published field.
     $fields += static::publishedBaseFieldDefinitions($entity_type);
 
+    $fields['id'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('ID'))
+      ->setDescription(t('The ID of the Advertiser entity.'))
+      ->setReadOnly(TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'integer',
+        'weight' => -4,
+      ]);
+
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
       ->setDescription(t('The minimum length of the name is 2 characters, and the maximum is 100'))
@@ -107,7 +117,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'string',
         'weight' => -4,
       ])
@@ -128,7 +138,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'email',
         'weight' => -3,
       ])
@@ -149,7 +159,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'string_textfield',
         'weight' => -2,
       ])
@@ -168,7 +178,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'text_long',
         'weight' => -1,
       ])
@@ -191,7 +201,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'image',
         'weight' => 0,
       ])
@@ -213,7 +223,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ])
       ->setDefaultValue('')
       ->setDisplayOptions('view', [
-        'label' => 'above',
+        'label' => 'hidden',
         'type' => 'image',
         'weight' => 1,
       ])
@@ -226,7 +236,19 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
-      ->setDescription(t('The time that the entity was created.'));
+      ->setDescription(t('The time that the entity was created.'))
+      ->setSettings([
+      ])
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'timestamp',
+        'weight' => -4,
+        'settings' => [
+          'date_format' => 'custom',
+          'custom_date_format' => 'M/d/Y H:i:s',
+        ],
+      ]);
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))

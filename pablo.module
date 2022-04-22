@@ -5,6 +5,8 @@
  * Module adds a guestbook to your site.
  */
 
+use Drupal\Core\Render\Element;
+
 /**
  * Implements hook_theme().
  */
@@ -14,7 +16,12 @@ function pablo_theme($existing, $type, $theme, $path) {
     'pablo_template' => [
       'variables' => [
         'form' => NULL,
+        'view' => NULL,
       ],
+    ],
+    'feedback' => [
+      'render element' => 'elements',
+      'template' => 'feedback',
     ],
   ];
 }
@@ -25,4 +32,24 @@ function pablo_theme($existing, $type, $theme, $path) {
 function pablo_entity_type_alter(array &$entity_types) {
   $feedback = &$entity_types['feedback'];
   $feedback->setFormClass('feedback_form', 'Drupal\pablo\Form\FeedbackForm');
+}
+
+/**
+ * Prepares variables for Feedback templates.
+ *
+ * Default template: feedback.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the user information and any
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_feedback(array &$variables) {
+  // Fetch Feedback Entity Object.
+  $feedback = $variables['elements']['#feedback'];
+
+  // Helpful $content variable for templates.
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
 }

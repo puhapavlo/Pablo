@@ -17,6 +17,10 @@
 #}
 <div{{ attributes.addClass('feedback') }}>
   {% if content %}
-    {{- content -}}
+    {{ content.name }}
+    {{ content.email }}
+    {{ content.avatar }}
+    {{ content.created }}
+    {{ content.id }}
   {% endif %}
 </div>
