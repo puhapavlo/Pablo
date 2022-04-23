@@ -236,9 +236,6 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
       ->setDescription(t('The time that the entity was created.'))
-      ->setSettings([
-      ])
-      ->setDefaultValue('')
       ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'timestamp',
