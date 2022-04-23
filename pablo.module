@@ -30,6 +30,7 @@ function pablo_theme($existing, $type, $theme, $path) {
  * Implements hook_entity_type_alter().
  */
 function pablo_entity_type_alter(array &$entity_types) {
+  // Adding class for feedback form.
   $feedback = &$entity_types['feedback'];
   $feedback->setFormClass('feedback_form', 'Drupal\pablo\Form\FeedbackForm');
 }
