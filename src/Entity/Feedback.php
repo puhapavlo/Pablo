@@ -199,7 +199,6 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
         'alt_field' => 0,
         'alt_field_required' => FALSE,
       ])
-      ->setDefaultValue('')
       ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'image',

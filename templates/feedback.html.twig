@@ -16,11 +16,35 @@
  */
 #}
 <div{{ attributes.addClass('feedback') }}>
-  {% if content %}
-    {{ content.name }}
-    {{ content.email }}
-    {{ content.avatar }}
-    {{ content.created }}
-    {{ content.id }}
-  {% endif %}
+    {% if content %}
+        <div class="feedback-user">
+            <div class="avatar-container">
+                {% if content.avatar.0 %}
+                    {{ content.avatar }}
+                {% else %}
+                    <div>
+                        <img src="modules/custom/pablo/images/avatar-default.png" alt="">
+                    </div>
+                {% endif %}
+            </div>
+            <h2 class="feedback-name">{{ content.name }}</h2>
+            <div class="feedback-timestamp">{{ content.created }}</div>
+        </div>
+
+        <div class="feedback-text">
+            <p>{{ content.feedback }}</p>
+            {{ content.picture }}
+        </div>
+
+        <div class="feedback-info">
+            <a class="feedback-phone" href="tel:{{ content.phone.0['#context'].value }}">{{ content.phone }}</a>
+            <a class="feedback-email" href="mailto:{{ content.email.0['#context'].value }}">{{ content.email }}</a>
+            {% if user.hasPermission('Edit Feedback entities') %}
+                <a class="feedback-edit" data-dialog-type="modal" href="/admin/structure/feedback/{{ content.id.0['#markup'] }}/edit">Edit</a>
+            {% endif %}
+            {% if user.hasPermission('Delete Feedback entities') %}
+                <a class="feedback-delete" data-dialog-type="modal" href="/admin/structure/feedback/{{ content.id.0['#markup'] }}/delete">Delete</a>
+            {% endif %}
+        </div>
+    {% endif %}
 </div>
