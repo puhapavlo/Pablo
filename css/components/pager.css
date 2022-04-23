@@ -1,0 +1,18 @@
+.pager ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+}
+.pager ul li a {
+  text-decoration: none;
+}
+.pager ul li a span {
+  color: #111;
+}
+.pager ul li:not(:last-child) {
+  margin-right: 10px;
+}

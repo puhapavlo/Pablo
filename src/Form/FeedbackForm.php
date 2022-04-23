@@ -97,11 +97,11 @@ class FeedbackForm extends ContentEntityForm {
       $status = parent::save($form, $form_state);
       switch ($status) {
         case SAVED_NEW:
-          $response->addCommand(new MessageCommand($this->t('Entry modified successfully.'), '#form-system-messages', ['type' => 'status']));
+          $response->addCommand(new MessageCommand($this->t('The entry was successfully saved.'), '#form-system-messages', ['type' => 'status']));
           break;
 
         default:
-          $response->addCommand(new MessageCommand($this->t('Thank you very much for your message.'), '#form-system-messages', ['type' => 'status']));
+          $response->addCommand(new MessageCommand($this->t('The entry was successfully saved.'), '#form-system-messages', ['type' => 'status']));
       }
     }
     return $response;

@@ -1,0 +1,35 @@
+//Styles for guestbook form.
+@import "../dev/mixins";
+
+.feedback-form {
+  margin: 40px auto 0;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+
+  .form-text, .form-textarea{
+    width: 100%;
+  }
+
+  .form-item {
+    margin-top: 15px;
+  }
+
+  .form-text {
+    height: 40px;
+  }
+
+  .form-textarea {
+    height: 180px;
+    resize: none;
+  }
+
+  .description {
+    font-size: 10px;
+    color: #919191;
+  }
+
+  .form-submit {
+    @include btn();
+  }
+}

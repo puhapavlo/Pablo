@@ -1,0 +1,21 @@
+.pager {
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+
+    li {
+      a {
+        text-decoration: none;
+
+        span {
+          color: #111;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}

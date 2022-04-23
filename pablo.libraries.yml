@@ -1,0 +1,9 @@
+pablo:
+  version: VERSION
+  css:
+    base:
+      css/base/elements.css: {}
+    components:
+      css/components/feedbackForm.css: {}
+      css/components/feedbacks.css: {}
+      css/components/pager.css: {}

@@ -195,7 +195,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ->setDescription(t('The image format should be jpeg, jpg, png and the file size should not exceed 2 MB'))
       ->setSettings([
         'file_extensions' => 'png jpg jpeg',
-        'max_filesize' => '2000000',
+        'max_filesize' => '2100000',
         'alt_field' => 0,
         'alt_field_required' => FALSE,
       ])
@@ -216,7 +216,7 @@ class Feedback extends ContentEntityBase implements FeedbackInterface {
       ->setDescription(t('The image format should be jpeg, jpg, png and the file size should not exceed 5 MB'))
       ->setSettings([
         'file_extensions' => 'png jpg jpeg',
-        'max_filesize' => '5000000',
+        'max_filesize' => '5100000',
         'alt_field' => 0,
         'alt_field_required' => FALSE,
       ])
