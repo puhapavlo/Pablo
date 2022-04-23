@@ -32,17 +32,14 @@ class PabloController extends ControllerBase {
     // Get a renderable FeedbackForm array.
     $feedback = Feedback::Create();
     $feedbackForm = \Drupal::service('entity.form_builder')->getForm($feedback, 'default');
-    $view = \Drupal\views\Views::getView('feedbacks');
-    $view->setDisplay('default');
-    $view->execute();
-
-    dpm($view->execute());
+    $view = views_embed_view('feedbacks');
 
     // Return renderable array.
     return [
       // Template name for current controller.
       '#theme' => 'pablo_template',
       '#form' => $feedbackForm,
+      '#view' => $view,
     ];
   }
 

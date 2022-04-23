@@ -5,7 +5,7 @@ dependencies:
     - image
     - pablo
 _core:
-  default_config_hash: m6p0PdLhTEhZ_WQIGCan88sMl7tYBGDlHopry1oKNTQ
+  default_config_hash: 1W2muH74Z0feAKgRDS2-APKyxUvZjdarxl4tW-WYT3k
 id: feedbacks
 label: Feedbacks
 module: views
@@ -517,7 +517,22 @@ display:
         type: tag
         options: {  }
       empty: {  }
-      sorts: {  }
+      sorts:
+        id:
+          id: id
+          table: feedback_field_data
+          field: id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: feedback
+          entity_field: id
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments: {  }
       filters:
         status:
@@ -536,12 +551,10 @@ display:
       style:
         type: default
       row:
-        type: fields
+        type: 'entity:feedback'
         options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+          relationship: none
+          view_mode: default
       query:
         type: views_query
         options:
@@ -551,6 +564,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }
